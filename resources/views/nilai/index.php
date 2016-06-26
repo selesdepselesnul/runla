@@ -56,42 +56,46 @@ $(document).ready(function() {
          ajaxStop: function() { body.removeClass("loading"); }    
     });
 
-        function showGrade() {
+    function showGrade(event) {
+        var key = event.which;
         var npm = $('#npmSearchInput').val();
-
+        console.log(event);
         if (npm.length == 14) {
-            
-            if(table != null)
+            console.log(key);
+            if(!(key >= 37 && key <= 40)) {
+                if(table != null)
                 table.destroy()
             
-            $('#gradeTableContainer').removeClass('hidden');
+                $('#gradeTableContainer').removeClass('hidden');
+
+                table = $('#gradesTable').DataTable({
+                    "ajax": "http://www.siakapi.selesdepselesnul.com/nilai/npm/"+npm,
+                    "columns": [
+                        { "data": "kode" },
+                        { "data": "matkul" },
+                        { "data": "mutu" },
+                        { "data": "nilaiangka" },
+                        { "data": "nilaihuruf",
+                          "render": function(grade) {
+                            if(grade == 'A' || grade == 'B')
+                                return '<span class="label label-success">'+grade+'</span>';
+                            else if(grade == 'C' || grade == 'D')
+                                return '<span class="label label-warning">'+grade+'</span>';
+                            else if(grade == 'E')
+                                return '<span class="label label-danger">'+grade+'</span>';
+                            else
+                                return '<span class="label label-default">'+grade+'</span>';
+                          } 
+                        },
+                        { "data": "sks" }
+                    ]
+                });    
+            }
             
-            table = $('#gradesTable').DataTable({
-                "ajax": "http://www.siakapi.selesdepselesnul.com/nilai/npm/"+npm,
-                "columns": [
-                    { "data": "kode" },
-                    { "data": "matkul" },
-                    { "data": "mutu" },
-                    { "data": "nilaiangka" },
-                    { "data": "nilaihuruf",
-                      "render": function(grade) {
-                        if(grade == 'A' || grade == 'B')
-                            return '<span class="label label-success">'+grade+'</span>';
-                        else if(grade == 'C' || grade == 'D')
-                            return '<span class="label label-warning">'+grade+'</span>';
-                        else if(grade == 'E')
-                            return '<span class="label label-danger">'+grade+'</span>';
-                        else
-                            return '<span class="label label-default">'+grade+'</span>';
-                      } 
-                    },
-                    { "data": "sks" }
-                ]
-            });
         }
     }
 
-    $('#npmSearchInput').on('keyup', showGrade);
+    $('#npmSearchInput').keyup(showGrade);
 })
 </script>
 </body>
