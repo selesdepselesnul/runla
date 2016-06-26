@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <div class="center-block row">
-        <input type="text" class="form-control" id="npmSearchInput" placeholder="npm">
+        <input type="text" class="form-control" id="npmSearchInput" placeholder="tulis npm-mu disini">
     </div>
     <div class="row">
         <div class="table-responsive">
