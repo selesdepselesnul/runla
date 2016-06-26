@@ -17,21 +17,22 @@
         <input type="text" class="form-control" id="npmSearchInput" placeholder="npm">
     </div>
     <div class="row">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Kode</th>
-                    <th>Matkul</th>
-                    <th>Mutu</th>
-                    <th>N. Angka</th>
-                    <th>N. Huruf</th>
-                    <th>SKS</th>
-                </tr>
-            </thead>
-            <tbody id="grades">
-                
-            </tbody>    
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Kode</th>
+                        <th>Matkul</th>
+                        <th>Mutu</th>
+                        <th>N. Angka</th>
+                        <th>N. Huruf</th>
+                        <th>SKS</th>
+                    </tr>
+                </thead>
+                <tbody id="grades">
+                </tbody>    
+            </table>
+        </div>
     </div>
     <div class="modal"></div>
 </div>
@@ -46,7 +47,7 @@
         ajaxStart: function() { body.addClass("loading");    },
          ajaxStop: function() { body.removeClass("loading"); }    
     });
-    $('#npmSearchInput').on('change keyup', function() {
+    $('#npmSearchInput').on('keyup', function() {
         var npm = $('#npmSearchInput').val();
         if (npm.length == 14) {
             $('.grade').remove();
