@@ -54,6 +54,18 @@
                     $('#gradeTableContainer').fadeIn(10000);
                     table = $('#gradesTable').DataTable({
                         "ajax": "http://www.siakapi.selesdepselesnul.com/nilai/npm/"+npm,
+                         "language": {
+                            "lengthMenu": "Nampilin _MENU_ matkul per halaman",
+                            "zeroRecords": "Nggak ada - sorry",
+                            "info": "Nampilin halaman _PAGE_ dar i _PAGES_",
+                            "infoEmpty": "Nggak ada yang cocok",
+                            "infoFiltered": "(difilter dari _MAX_ total matkul)",
+                            "paginate": {
+                              "previous": "Sebelumnya",
+                              "next": "Berikutnya"
+                            },
+                            "search": "Sok di filter"
+                        },
                         "columns": [
                             { "data": "kode" },
                             { "data": "matkul" },
