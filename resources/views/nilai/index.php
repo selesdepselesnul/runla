@@ -15,13 +15,13 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <h2>Mau lihat nilai semua mahasiswa UNLA ?</h2>
     <div class="center-block row">
         <input type="text" class="form-control" id="npmSearchInput" placeholder="masukan npm-nya!">
     </div>
-
-    <div class="row">
+    <div class="modal"></div>
+    <div class="row center-block">
         <div class="table-responsive">
             <table id="gradesTable" class="table table-hover">
                 <thead>
@@ -37,7 +37,7 @@
             </table>
         </div>
     </div>
-    <div class="modal"></div>
+ 
 </div>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <!-- Latest compiled and minified JavaScript -->

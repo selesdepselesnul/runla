@@ -1,3 +1,8 @@
+* {
+  background-color: black;
+  color: white;
+}
+
 #npmSearchInput {
 	margin-top: 20px;
 	text-align: center;
