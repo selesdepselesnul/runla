@@ -42,3 +42,7 @@ body.loading {
 body.loading .modal {
     display: block;
 }
+
+.table-responsive, input {
+  margin-top: 4px;
+}

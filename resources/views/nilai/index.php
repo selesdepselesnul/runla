@@ -16,12 +16,14 @@
 </head>
 <body>
 <div class="container-fluid">
-    <h2>Mau lihat nilai semua mahasiswa UNLA ?</h2>
+    <h2 class="visible-md-block visible-lg-block">Mau lihat nilai semua mahasiswa UNLA ?</h2>
+    <h4 class="visible-sm-block">Mau lihat nilai semua mahasiswa UNLA ?<h4>
+    <h6 class="visible-xs-block">Mau lihat nilai semua mahasiswa UNLA ?</h6>
     <div class="center-block row">
         <input type="text" class="form-control" id="npmSearchInput" placeholder="masukan npm-nya!">
     </div>
     <div class="modal"></div>
-    <div class="row center-block">
+    <div id="gradeTableContainer" class="row center-block hidden">
         <div class="table-responsive">
             <table id="gradesTable" class="table table-hover">
                 <thead>
@@ -61,6 +63,8 @@ $(document).ready(function() {
             
             if(table != null)
                 table.destroy()
+            
+            $('#gradeTableContainer').removeClass('hidden');
             
             table = $('#gradesTable').DataTable({
                 "ajax": "http://www.siakapi.selesdepselesnul.com/nilai/npm/"+npm,
