@@ -50,10 +50,17 @@ $(document).ready(function() {
         ajaxStart: function() { body.addClass("loading");    },
          ajaxStop: function() { body.removeClass("loading"); }    
     });
+    var table;
     $('#npmSearchInput').on('keyup', function() {
         var npm = $('#npmSearchInput').val();
+
+
         if (npm.length == 14) {
-            $('#gradesTable').DataTable({
+            
+            if(table != null)
+                table.destroy()
+            
+            table = $('#gradesTable').DataTable({
                 "ajax": "http://www.siakapi.selesdepselesnul.com/nilai/npm/"+npm,
                 "columns": [
                     { "data": "kode" },
