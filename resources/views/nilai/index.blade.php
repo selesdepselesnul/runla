@@ -7,7 +7,7 @@
     <h4 class="visible-sm-block">Mau lihat nilai semua mahasiswa UNLA ?<h4>
     <h6 class="visible-xs-block">Mau lihat nilai semua mahasiswa UNLA ?</h6>
     <div class="center-block row">
-        <input type="text" class="form-control" id="npmSearchInput" placeholder="masukan npm-nya!">
+        <input type="text" class="form-control" id="npmSearchInput" placeholder="tulis npm-nya disini!">
     </div>
     <div class="modal"></div>
     <div id="gradeTableContainer" class="row center-block">
