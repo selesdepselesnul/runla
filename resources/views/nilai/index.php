@@ -17,18 +17,48 @@
         <input type="text" class="form-control" id="npmSearchInput" placeholder="npm">
     </div>
     <div class="row">
-        <table class="table table-hover">    
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Kode</th>
+                    <th>Matkul</th>
+                    <th>Mutu</th>
+                    <th>N. Angka</th>
+                    <th>N. Huruf</th>
+                    <th>SKS</th>
+                </tr>
+            </thead>
+            <tbody id="grades">
+                
+            </tbody>    
         </table>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="js/underscore-min.js"></script>
 <script type="text/javascript">
     $('#npmSearchInput').on('change keyup', function() {
         var npm = $('#npmSearchInput').val();
-        if (npm.length == 14)
-            console.log(npm);
+        if (npm.length == 14) {
+            $('.grade').remove();
+            $.get( "http://siakapi.selesdepselesnul.com/nilai/npm/"+npm, function(grades) {
+              _.each(grades, function(x) {
+                $('#grades').append(
+                    '<tr class="grade">'
+                       +'<td>'+x.kode+'</td>'
+                       +'<td>'+x.matkul+'</td>'
+                       +'<td>'+x.mutu+'</td>'
+                       +'<td>'+x.nilaiangka+'</td>'
+                       +'<td>'+x.nilaihuruf+'</td>'
+                       +'<td>'+x.sks+'</td>'
+                   +'</tr>'
+                );
+              });
+            });
+        }
+            
     });
 </script>
 </body>
