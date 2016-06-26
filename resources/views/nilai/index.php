@@ -16,6 +16,7 @@
 </head>
 <body>
 <div class="container">
+    <h1>Mau lihat nilai ?</h1>
     <div class="center-block row">
         <input type="text" class="form-control" id="npmSearchInput" placeholder="tulis npm-mu disini">
     </div>
@@ -67,7 +68,18 @@ $(document).ready(function() {
                     { "data": "matkul" },
                     { "data": "mutu" },
                     { "data": "nilaiangka" },
-                    { "data": "nilaihuruf" },
+                    { "data": "nilaihuruf",
+                      "render": function(grade) {
+                        if(grade == 'A' || grade == 'B')
+                            return '<span class="label label-success">'+grade+'</span>';
+                        else if(grade == 'C' || grade == 'D')
+                            return '<span class="label label-warning">'+grade+'</span>';
+                        else if(grade == 'E')
+                            return '<span class="label label-danger">'+grade+'</span>';
+                        else
+                            return '<span class="label label-default">'+grade+'</span>';
+                      } 
+                    },
                     { "data": "sks" }
                 ]
             });
