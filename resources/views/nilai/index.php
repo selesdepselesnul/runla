@@ -9,17 +9,18 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/nilai.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.6/dt-1.10.12/datatables.min.css"/>
  
-    
+
 
 </head>
 <body>
 <div class="container">
-    <h1>Mau lihat nilai semua mahasiswa UNLA ?</h1>
+    <h2>Mau lihat nilai semua mahasiswa UNLA ?</h2>
     <div class="center-block row">
-        <input type="text" class="form-control" id="npmSearchInput" placeholder="masukan npm-nya disini">
+        <input type="text" class="form-control" id="npmSearchInput" placeholder="masukan npm-nya!">
     </div>
+
     <div class="row">
         <div class="table-responsive">
             <table id="gradesTable" class="table table-hover">
@@ -41,20 +42,20 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.6/dt-1.10.12/datatables.min.js"></script>
 <script src="js/underscore-min.js"></script>
 <script type="text/javascript">    
+
 $(document).ready(function() {
     var body = $("body");
-
+    var table;
     $(document).on({
         ajaxStart: function() { body.addClass("loading");    },
          ajaxStop: function() { body.removeClass("loading"); }    
     });
-    var table;
-    $('#npmSearchInput').on('keyup', function() {
-        var npm = $('#npmSearchInput').val();
 
+        function showGrade() {
+        var npm = $('#npmSearchInput').val();
 
         if (npm.length == 14) {
             
@@ -84,7 +85,9 @@ $(document).ready(function() {
                 ]
             });
         }
-    });
+    }
+
+    $('#npmSearchInput').on('keyup', showGrade);
 })
 </script>
 </body>
