@@ -11,8 +11,9 @@
 |
 */
 
+Route::get('/nilai/', 'NilaiController@index')->name('nilai');
+
 Route::get('/', function () {
-    return view('index');
+    return redirect()->route('nilai');
 });
 
-Route::get('/nilai/', 'NilaiController@index');
