@@ -16,9 +16,9 @@
 </head>
 <body>
 <div class="container">
-    <h1>Mau lihat nilai ?</h1>
+    <h1>Mau lihat nilai semua mahasiswa UNLA ?</h1>
     <div class="center-block row">
-        <input type="text" class="form-control" id="npmSearchInput" placeholder="tulis npm-mu disini">
+        <input type="text" class="form-control" id="npmSearchInput" placeholder="masukan npm-nya disini">
     </div>
     <div class="row">
         <div class="table-responsive">
