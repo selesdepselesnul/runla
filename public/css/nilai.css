@@ -3,6 +3,7 @@
   color: white;
 }
 
+
 #npmSearchInput {
 	margin-top: 20px;
 	text-align: center;
@@ -12,6 +13,14 @@
 	color: white;
 }
 
+.pagination>.active>a, 
+.pagination>.active>a:focus, 
+.pagination>.active>a:hover, 
+.pagination>.active>span, 
+.pagination>.active>span:focus, 
+.pagination>.active>span:hover {
+  background-color: black;
+}
 /* Start by setting display:none to make this hidden.
    Then we position it in relation to the viewport window
    with position:fixed. Width, height, top and left speak
