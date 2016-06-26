@@ -9,6 +9,9 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/nilai.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+ 
+    
 
 </head>
 <body>
@@ -18,7 +21,7 @@
     </div>
     <div class="row">
         <div class="table-responsive">
-            <table class="table table-hover">
+            <table id="gradesTable" class="table table-hover">
                 <thead>
                     <tr>
                         <th>Kode</th>
@@ -29,8 +32,6 @@
                         <th>SKS</th>
                     </tr>
                 </thead>
-                <tbody id="grades">
-                </tbody>    
             </table>
         </div>
     </div>
@@ -39,8 +40,10 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
 <script src="js/underscore-min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript">    
+$(document).ready(function() {
     var body = $("body");
 
     $(document).on({
@@ -50,24 +53,20 @@
     $('#npmSearchInput').on('keyup', function() {
         var npm = $('#npmSearchInput').val();
         if (npm.length == 14) {
-            $('.grade').remove();
-            $.get( "http://siakapi.selesdepselesnul.com/nilai/npm/"+npm, function(grades) {
-              _.each(grades, function(x) {
-                $('#grades').append(
-                    '<tr class="grade">'
-                       +'<td>'+x.kode+'</td>'
-                       +'<td>'+x.matkul+'</td>'
-                       +'<td>'+x.mutu+'</td>'
-                       +'<td>'+x.nilaiangka+'</td>'
-                       +'<td>'+x.nilaihuruf+'</td>'
-                       +'<td>'+x.sks+'</td>'
-                   +'</tr>'
-                );
-              });
+            $('#gradesTable').DataTable({
+                "ajax": "http://127.0.0.1:8080/ningaliunla/nilai/npm/"+npm,
+                "columns": [
+                    { "data": "kode" },
+                    { "data": "matkul" },
+                    { "data": "mutu" },
+                    { "data": "nilaiangka" },
+                    { "data": "nilaihuruf" },
+                    { "data": "sks" }
+                ]
             });
         }
-            
     });
+})
 </script>
 </body>
 </html>
