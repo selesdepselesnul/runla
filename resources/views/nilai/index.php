@@ -54,7 +54,7 @@ $(document).ready(function() {
         var npm = $('#npmSearchInput').val();
         if (npm.length == 14) {
             $('#gradesTable').DataTable({
-                "ajax": "http://127.0.0.1:8080/ningaliunla/nilai/npm/"+npm,
+                "ajax": "http://www.siakapi.selesdepselesnul.com/nilai/npm/"+npm,
                 "columns": [
                     { "data": "kode" },
                     { "data": "matkul" },
