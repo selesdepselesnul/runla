@@ -26,7 +26,11 @@
             </table>
         </div>
     </div>
-    <footer><h2>runla &copy <?php echo date('Y') ?> by <a href="https://github.com/selesdepselesnul">selesdepselesnul</a></h2></footer>
+    <footer>
+        <h2 class="visible-md-block visible-lg-block">runla &copy <?php echo date('Y') ?> by <a href="https://github.com/selesdepselesnul">selesdepselesnul</a></h2>
+        <h4 class="visible-sm-block">runla &copy <?php echo date('Y') ?> by <a href="https://github.com/selesdepselesnul">selesdepselesnul</a><h4>
+        <h6 class="visible-xs-block">runla &copy <?php echo date('Y') ?> by <a href="https://github.com/selesdepselesnul">selesdepselesnul</a></h6>
+    </footer>
 @endsection
 @section('customjs')
     <script type="text/javascript">    
