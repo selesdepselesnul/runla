@@ -26,6 +26,7 @@
             </table>
         </div>
     </div>
+    <footer><h2>runla &copy <?php echo date('Y') ?> by <a href="https://github.com/selesdepselesnul">selesdepselesnul</a></h2></footer>
 @endsection
 @section('customjs')
     <script type="text/javascript">    
