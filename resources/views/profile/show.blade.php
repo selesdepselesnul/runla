@@ -13,20 +13,20 @@
 
 @section('customjs')
 <script type="text/javascript">
-$('#profileText').hide();
-var body = $("body");
-$(document).on({
-    ajaxStart: function() { body.addClass("loading");    },
-    ajaxStop: function() { 
-        body.removeClass("loading"); 
-        $('#profileText').show();
-    }    
-});
-function checkIfNull(data) {
-    return data == '' || data == null ? '-' : data;
-}
-$(document).ready(function() {
 
+$(document).ready(function() {
+    $('#profileText').hide();
+    var body = $("body");
+    $(document).on({
+        ajaxStart: function() { body.addClass("loading");    },
+        ajaxStop: function() { 
+            body.removeClass("loading"); 
+            $('#profileText').show();
+        }    
+    });
+    function checkIfNull(data) {
+        return data == '' || data == null ? '-' : data;
+    }
     $.get(
         "http://www.siakapi.selesdepselesnul.com/profile/npm/"+{{ $npm }}, 
         function(profile) {
