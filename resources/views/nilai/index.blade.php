@@ -53,9 +53,7 @@
                     console.log(profileText);
                     $('#profileDialog').removeClass('hidden');
                     $('#profileDialog').dialog({
-                        title : 'Profile ',
-                        width : 40,
-                        height : 40
+                        title : 'Profile '
                     });
                     $('#profileTextArea').text(profileText);
                 } else {
