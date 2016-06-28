@@ -2,12 +2,17 @@
 @section('customcss')
     <link rel="stylesheet" type="text/css" href="css/nilai.css">
 @endsection
+
 @section('content')
     <h2 class="visible-md-block visible-lg-block">Mau lihat nilai semua mahasiswa UNLA ?</h2>
     <h4 class="visible-sm-block">Mau lihat nilai semua mahasiswa UNLA ?<h4>
     <h6 class="visible-xs-block">Mau lihat nilai semua mahasiswa UNLA ?</h6>
     <div class="center-block row">
         <input type="text" class="form-control" id="npmSearchInput" placeholder="tulis npm-nya disini!">
+    </div>
+    <input id="seeProfile" class="btn btn-default hidden" type="button" value="lihat profile mahasiswa">
+    <div id="profileDialog" title="Basic dialog" class="hidden row">
+        <textarea id="profileTextArea" disabled="disabled" class="row"></textarea>
     </div>
     <div class="modal"></div>
     <div id="gradeTableContainer" class="row center-block">
@@ -33,7 +38,39 @@
     </footer>
 @endsection
 @section('customjs')
-    <script type="text/javascript">    
+    <script type="text/javascript">   
+    $('#seeProfile').click(function() {
+        var npm = $('#npmSearchInput').val();
+        $.get(
+            "http://www.siakapi.selesdepselesnul.com/profile/npm/"+npm, 
+            function(profile) {
+                var studentProfile = profile.data;
+
+                if(studentProfile) {
+                    var profileText = _.reduce(studentProfile, function(memo, val, key) {
+                        return memo + '\n' + key + " : " + (val == null || val == '' ? '-' : val)
+                    });
+                    console.log(profileText);
+                    $('#profileDialog').removeClass('hidden');
+                    $('#profileDialog').dialog({
+                        title : 'Profile ',
+                        width : 40,
+                        height : 40
+                    });
+                    $('#profileTextArea').text(profileText);
+                } else {
+                    $('#profileDialog').removeClass('hidden');
+                    $('#profileDialog').dialog({
+                        title : 'Profile',
+                        width : 40,
+                        height : 40
+                    });
+                    $('#profileTextArea').text(
+                        'yang bersangkutan tidak berkenan dilihat profilenya\nanda tidak berkenan ? \nhubungi selesdepselesnul@gmail.com');
+                }
+               
+            }, "json" );
+    }); 
     $('#gradeTableContainer').hide();
     $(document).ready(function() {
         var body = $("body");
@@ -91,6 +128,7 @@
                             { "data": "sks" }
                         ]
                     });  
+                    $('#seeProfile').removeClass('hidden');
                 }
                 
             }
