@@ -12,7 +12,7 @@
     </div>
     <input id="seeProfile" class="btn btn-default hidden" type="button" value="lihat profile mahasiswa">
     <div id="profileDialog" title="Basic dialog" class="hidden row">
-        <textarea id="profileTextArea" disabled="disabled" class="row"></textarea>
+        <textarea width="200" height="400" id="profileTextArea" disabled="disabled" class="row"></textarea>
     </div>
     <div class="modal"></div>
     <div id="gradeTableContainer" class="row center-block">
@@ -53,13 +53,17 @@
                     console.log(profileText);
                     $('#profileDialog').removeClass('hidden');
                     $('#profileDialog').dialog({
-                        title : 'Profile '
+                        title : 'Profile ',
+                        width: 200,
+                        height: 40 
                     });
                     $('#profileTextArea').text(profileText);
                 } else {
                     $('#profileDialog').removeClass('hidden');
                     $('#profileDialog').dialog({
                         title : 'Profile',
+                        width: 200,
+                        height: 40
                     });
                     $('#profileTextArea').text(
                         'yang bersangkutan tidak berkenan dilihat profilenya\nanda tidak berkenan ? \nhubungi selesdepselesnul@gmail.com');
