@@ -62,8 +62,6 @@
                     $('#profileDialog').removeClass('hidden');
                     $('#profileDialog').dialog({
                         title : 'Profile',
-                        width : 40,
-                        height : 40
                     });
                     $('#profileTextArea').text(
                         'yang bersangkutan tidak berkenan dilihat profilenya\nanda tidak berkenan ? \nhubungi selesdepselesnul@gmail.com');
