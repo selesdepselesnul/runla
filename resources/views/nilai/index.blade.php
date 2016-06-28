@@ -45,7 +45,7 @@
             "http://www.siakapi.selesdepselesnul.com/profile/npm/"+npm, 
             function(profile) {
                 var studentProfile = profile.data;
-
+                $("#profileDialog").resizable();
                 if(studentProfile) {
                     var profileText = _.reduce(studentProfile, function(memo, val, key) {
                         return memo + '\n' + key + " : " + (val == null || val == '' ? '-' : val)
