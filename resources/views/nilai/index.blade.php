@@ -1,8 +1,4 @@
 @extends('master')
-@section('customcss')
-    <link rel="stylesheet" type="text/css" href="css/nilai.css">
-@endsection
-
 @section('content')
     <h2 class="visible-md-block visible-lg-block">Mau lihat nilai semua mahasiswa UNLA ?</h2>
     <h4 class="visible-sm-block">Mau lihat nilai semua mahasiswa UNLA ?<h4>
@@ -10,10 +6,7 @@
     <div class="center-block row">
         <input type="text" class="form-control" id="npmSearchInput" placeholder="tulis npm-nya disini!">
     </div>
-    <input id="seeProfile" class="btn btn-default hidden" type="button" value="lihat profile mahasiswa">
-    <div id="profileDialog" title="Basic dialog" class="hidden row">
-        <textarea width="200" height="400" id="profileTextArea" disabled="disabled" class="row"></textarea>
-    </div>
+    <a href="" id="seeProfile" class="btn btn-default hidden">lihat profile mahasiswa</a>
     <div class="modal"></div>
     <div id="gradeTableContainer" class="row center-block">
         <div class="table-responsive">
@@ -39,38 +32,7 @@
 @endsection
 @section('customjs')
     <script type="text/javascript">   
-    $('#seeProfile').click(function() {
-        var npm = $('#npmSearchInput').val();
-        $.get(
-            "http://www.siakapi.selesdepselesnul.com/profile/npm/"+npm, 
-            function(profile) {
-                var studentProfile = profile.data;
-                $("#profileDialog").resizable();
-                if(studentProfile) {
-                    var profileText = _.reduce(studentProfile, function(memo, val, key) {
-                        return memo + '\n' + key + " : " + (val == null || val == '' ? '-' : val)
-                    });
-                    console.log(profileText);
-                    $('#profileDialog').removeClass('hidden');
-                    $('#profileDialog').dialog({
-                        title : 'Profile ',
-                        width: 200,
-                        height: 40 
-                    });
-                    $('#profileTextArea').text(profileText);
-                } else {
-                    $('#profileDialog').removeClass('hidden');
-                    $('#profileDialog').dialog({
-                        title : 'Profile',
-                        width: 200,
-                        height: 40
-                    });
-                    $('#profileTextArea').text(
-                        'yang bersangkutan tidak berkenan dilihat profilenya\nanda tidak berkenan ? \nhubungi selesdepselesnul@gmail.com');
-                }
-               
-            }, "json" );
-    }); 
+  
     $('#gradeTableContainer').hide();
     $(document).ready(function() {
         var body = $("body");
@@ -128,6 +90,9 @@
                             { "data": "sks" }
                         ]
                     });  
+                    
+                    var baseUrl = window.location.href.replace(/\/[^\/]+\/?$/, '');
+                    $('#seeProfile').attr('href', baseUrl + '/profile/' + npm);
                     $('#seeProfile').removeClass('hidden');
                 }
                 

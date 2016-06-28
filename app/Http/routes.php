@@ -12,6 +12,8 @@
 */
 
 Route::get('/nilai/', 'NilaiController@index')->name('nilai');
+Route::get('/profile/{id}', 
+	'ProfileController@showProfile')->name('profile');
 
 Route::get('/', function () {
     return redirect()->route('nilai');
